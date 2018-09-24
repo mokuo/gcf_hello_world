@@ -7,3 +7,16 @@
 exports.helloGET = (req, res) => {
   res.send('Hello World!');
 };
+
+/**
+ * Background Cloud Function to be triggered by Pub/Sub.
+ *
+ * @param {object} event The Cloud Functions event.
+ * @param {function} callback The callback function.
+ */
+exports.helloPubSub = (event, callback) => {
+  const pubsubData = event.data;
+  console.log(pubsubData.message);
+
+  callback();
+};
